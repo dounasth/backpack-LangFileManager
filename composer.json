@@ -7,15 +7,10 @@
         "lang files",
         "lang file manager",
         "language",
-        "dick",
         "tabacitu",
-        "updivision",
-        "dick admin",
-        "dickadmin",
         "laravel",
         "admin panel",
-        "translationmanager",
-        "dick translationmanager"
+        "translationmanager"
     ],
     "homepage": "https://github.com/laravel-backpack/langfilemanager",
     "license": "MIT",
@@ -33,7 +28,7 @@
         }
     ],
     "require": {
-        "backpack/crud": "^5.0"
+        "backpack/crud": "^6.0"
     },
     "require-dev": {
         "phpunit/phpunit" : "^9.0",

@@ -1,4 +1,4 @@
-@extends(backpack_view('layouts.top_left'))
+@extends(backpack_view('blank'))
 
 @php
   $defaultBreadcrumbs = [
@@ -12,15 +12,19 @@
 @endphp
 
 @section('header')
-	<section class="container-fluid">
-	  <h2>
-        <span class="text-capitalize">{{ trans('backpack::langfilemanager.translate') }}</span>
-        <small>{{ trans('backpack::langfilemanager.site_texts') }}.</small>
-
-        @if ($crud->hasAccess('list'))
-          <small><a href="{{ url($crud->route) }}" class="hidden-print font-sm"><i class="fa fa-angle-double-left"></i> {{ trans('backpack::crud.back_to_all') }} <span>{{ $crud->entity_name_plural }}</span></a></small>
-        @endif
-	  </h2>
+	<section class="header-operation container-fluid animated fadeIn d-flex mb-2 align-items-end" bp-section="page-header">
+		<h1 bp-section="page-heading" class="mb-2">
+			{{ trans('backpack::langfilemanager.translate') }}
+		</h1>
+		<p class="ms-2 ml-2 mb-2" bp-section="page-subheading">
+			{{ trans('backpack::langfilemanager.site_texts') }}.</i>
+		</p>
+		@if ($crud->hasAccess('list'))
+		<p class="ms-2 ml-2 mb-2" bp-section="page-subheading-back-button">
+			<small><a href="{{ url($crud->route) }}" class="hidden-print font-sm"><i class="fa fa-angle-double-left"></i> {{
+					trans('backpack::crud.back_to_all') }} <span>{{ $crud->entity_name_plural }}</span></a></small>
+		</p>
+		@endif
 	</section>
 @endsection
 
@@ -28,7 +32,7 @@
 <!-- Default box -->
   <div class="box">
   	<div class="box-header with-border">
-	  <h3 class="box-title float-right pr-1">
+	  <div class="box-title float-right float-end pr-1">
 		<small>
 			 &nbsp; {{ trans('backpack::langfilemanager.switch_to') }}: &nbsp;
 			<select name="language_switch" id="language_switch">
@@ -37,17 +41,17 @@
 				@endforeach
 			</select>
 		</small>
-	  </h3>
+	  </div>
 	</div>
     <div class="box-body">
 		<ul class="nav nav-tabs">
 			@foreach ($langFiles as $file)
 			<li class="nav-item">
-				<a class="nav-link {{ $file['active'] ? 'active' : '' }}" href="{{ $file['url'] }}">{{ $file['name'] }}</a>
+				<a class="nav-link {{ $file['active'] ? 'active bg-white' : '' }}" href="{{ $file['url'] }}">{{ $file['name'] }}</a>
 			</li>
 			@endforeach
 		</ul>
-		<section class="tab-content p-3 lang-inputs">
+		<section class="tab-content bg-white p-3 lang-inputs mb-2">
 		@if (!empty($fileArray))
 			<form
 				method="post"
